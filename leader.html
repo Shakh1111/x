@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Сайт с лайками</title>
+  <title>Duck</title>
   <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,25 +27,24 @@
   </div>
 
 <div class="bar">
-<a href="task.html">
-<img src="https://i.postimg.cc/Lsbs8CD5/224-EB152-56-B6-4-DF4-A1-C6-05-E5-AFA4-D20-B.png" width="40vw" style="margin-top: -3vw; margin-left: 36.5vw; position: absolute;">
-  <button class="task">Task</button>
-</a>
-<a href="index.html">
-  <img src="https://i.postimg.cc/mDDDSxXT/7041-BE85-5-B0-E-4004-B5-F3-EC7-B3-BE7-BEB9.png" width="40vw" style="position: absolute; margin-top: -2vw; margin-left: 9.5vw;">
-    <button class="game">Game</button>
-</a>
-<img src="https://i.postimg.cc/5NBjSm4K/E6-FE089-D-FE85-4760-88-BE-3-B30-F5858574.png" width="60vw" style="position: absolute; margin-top: -7vw; margin-left: 8.5vw;">
-    <button class="soon"><b>Leader</b></button>
+    <a href="task.html">
+      <button class="task">Task</button>
+    </a>
+    <a href="index.html">
+      <img src="https://i.postimg.cc/bwTphZp3/IMG-2881.png" width="50px" style="position: absolute; margin-top: -5vw; margin-left: 8vw;">
+        <button class="game">Game</button>
+    </a>
+    <a href="leader.html">
+        <button class="soon"><b>Leaders</b></button>
+    </a>
 </div>
 
 <style>
     body {
       font-family:  Geologica;
-      background-color: black;
+      background-image: url('https://media0.giphy.com/media/iqn1W7iaSzQZ9DuTPU/giphy.gif?cid=9b38fe916dnmwb69gl8ywlp93aat9pl0j936gucyhjrjlo7z&ep=v1_gifs_username&rid=giphy.gif&ct=g');
       color: white;
       touch-action: none;
-      overflow-x: scroll;
     }
     #leaderboard {
       width: 100%;
@@ -70,26 +69,23 @@
     background-color: rgb(0, 0, 0);
     bottom: 0;
     width: 150%;
-    height: 20vw;
-    border-radius: 25px;
-    margin-left: -25vw;
+    height: 80px;
     position: fixed;
+    margin-left: -19px;
 }
 .task {
     background-color: rgb(0, 0, 0);
     width: 33vw;
     height: 20vw;
-    border-radius: 25px;
     border: none;
     font-family: Geologica;
     color: white;
-    margin-left: 25vw;
+    margin-left: 2vw;
 }
 .game {
     background-color: rgb(0, 0, 0);
     width: 33vw;
     height: 20vw;
-    border-radius: 25px;
     border: none;
     font-family: Geologica;
     color: white;
@@ -97,53 +93,51 @@
 }
 .soon{
     background-color: rgb(0, 0, 0);
-    width: 33vw;
+    width: 36vw;
     height: 20vw;
-    border-radius: 25px;
     border: none;
     font-family: Geologica;
     color: white;
     margin-left: -1vw;
-    font-size: 18px;
 }
 </style>
 
-  <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-        import { getDatabase, ref, set, get, child, onValue } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getDatabase, ref, set, get, child, onValue } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
 
-        const firebaseConfig = {
-          apiKey: "AIzaSyBhTL7JcmGtdwPpJyKkwMRoIEOIU17ZxUk",
-          authDomain: "tapalka-c9556.firebaseapp.com",
-          databaseURL: "https://tapalka-c9556-default-rtdb.firebaseio.com",
-          projectId: "tapalka-c9556",
-          storageBucket: "tapalka-c9556.firebasestorage.app",
-          messagingSenderId: "386428968826",
-          appId: "1:386428968826:web:de56837a0bbc2cf27940c3",
-          measurementId: "G-YENX5XCT8J"
-        };
+    const firebaseConfig = {
+      apiKey: "AIzaSyCWxefvAHiYxd5cmosgkRNEa8CCsHFPGDI",
+      authDomain: "tapmeery.firebaseapp.com",
+      databaseURL: "https://tapmeery-default-rtdb.firebaseio.com",
+      projectId: "tapmeery",
+      storageBucket: "tapmeery.firebasestorage.app",
+      messagingSenderId: "349575034866",
+      appId: "1:349575034866:web:38ec17b6617046e9969d6b",
+      measurementId: "G-E8B1NPDQF1"
+    };
 
-        const app = initializeApp(firebaseConfig);
+    const app = initializeApp(firebaseConfig);
 
-        const db = getDatabase(app);
-        const leaderboardBody = document.getElementById("leaderboard-body");
+    const db = getDatabase(app);
+    const leaderboardBody = document.getElementById("leaderboard-body");
 
-        // Получаем данные из Firebase и обновляем таблицу
-        onValue(ref(db, 'counts/'), (snapshot) => {
-          leaderboardBody.innerHTML = ''; // Очищаем таблицу
+    // Получаем данные из Firebase и обновляем таблицу
+    onValue(ref(db, 'counts/'), (snapshot) => {
+      leaderboardBody.innerHTML = ''; // Очищаем таблицу
 
-          // Сортируем данные по количеству лайков в обратном порядке
-          const sortedCounts = Object.entries(snapshot.val()).sort((a, b) => b[1].count - a[1].count);
+      // Сортируем данные по количеству лайков в обратном порядке
+      const sortedCounts = Object.entries(snapshot.val()).sort((a, b) => b[1].count - a[1].count);
 
-          // Отображаем данные в таблице
-          sortedCounts.forEach(([userId, count]) => {
-            const row = leaderboardBody.insertRow();
-            const idCell = row.insertCell();
-            const countCell = row.insertCell();
-            idCell.textContent = userId;
-            countCell.textContent = count.count;
-          });
-        });
+      // Отображаем данные в таблице
+      sortedCounts.forEach(([userId, count]) => {
+        const row = leaderboardBody.insertRow();
+        const idCell = row.insertCell();
+        const countCell = row.insertCell();
+        idCell.textContent = userId;
+        countCell.textContent = count.count;
+      });
+    });
 </script>
 </body>
 </html>
