@@ -101,42 +101,42 @@
 }
 </style>
 
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-    import { getDatabase, ref, set, get, child, onValue } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+ <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getDatabase, ref, set, get, child, onValue } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCWxefvAHiYxd5cmosgkRNEa8CCsHFPGDI",
-      authDomain: "tapmeery.firebaseapp.com",
-      databaseURL: "https://tapmeery-default-rtdb.firebaseio.com",
-      projectId: "tapmeery",
-      storageBucket: "tapmeery.firebasestorage.app",
-      messagingSenderId: "349575034866",
-      appId: "1:349575034866:web:38ec17b6617046e9969d6b",
-      measurementId: "G-E8B1NPDQF1"
-    };
+        const firebaseConfig = {
+          apiKey: "AIzaSyBhTL7JcmGtdwPpJyKkwMRoIEOIU17ZxUk",
+          authDomain: "tapalka-c9556.firebaseapp.com",
+          databaseURL: "https://tapalka-c9556-default-rtdb.firebaseio.com",
+          projectId: "tapalka-c9556",
+          storageBucket: "tapalka-c9556.firebasestorage.app",
+          messagingSenderId: "386428968826",
+          appId: "1:386428968826:web:de56837a0bbc2cf27940c3",
+          measurementId: "G-YENX5XCT8J"
+        };
 
-    const app = initializeApp(firebaseConfig);
+        const app = initializeApp(firebaseConfig);
 
-    const db = getDatabase(app);
-    const leaderboardBody = document.getElementById("leaderboard-body");
+        const db = getDatabase(app);
+        const leaderboardBody = document.getElementById("leaderboard-body");
 
-    // Получаем данные из Firebase и обновляем таблицу
-    onValue(ref(db, 'counts/'), (snapshot) => {
-      leaderboardBody.innerHTML = ''; // Очищаем таблицу
+        // Получаем данные из Firebase и обновляем таблицу
+        onValue(ref(db, 'counts/'), (snapshot) => {
+          leaderboardBody.innerHTML = ''; // Очищаем таблицу
 
-      // Сортируем данные по количеству лайков в обратном порядке
-      const sortedCounts = Object.entries(snapshot.val()).sort((a, b) => b[1].count - a[1].count);
+          // Сортируем данные по количеству лайков в обратном порядке
+          const sortedCounts = Object.entries(snapshot.val()).sort((a, b) => b[1].count - a[1].count);
 
-      // Отображаем данные в таблице
-      sortedCounts.forEach(([userId, count]) => {
-        const row = leaderboardBody.insertRow();
-        const idCell = row.insertCell();
-        const countCell = row.insertCell();
-        idCell.textContent = userId;
-        countCell.textContent = count.count;
-      });
-    });
+          // Отображаем данные в таблице
+          sortedCounts.forEach(([userId, count]) => {
+            const row = leaderboardBody.insertRow();
+            const idCell = row.insertCell();
+            const countCell = row.insertCell();
+            idCell.textContent = userId;
+            countCell.textContent = count.count;
+          });
+        });
 </script>
 </body>
 </html>
